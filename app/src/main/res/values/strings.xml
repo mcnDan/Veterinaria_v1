@@ -1,3 +1,70 @@
 <resources>
     <string name="app_name">Veterinaria_v1</string>
+
+    <string name="et_ingresarDni_string">Ingresar DNI</string>
+    <string name="bt_ingresar_string">Ingresar</string>
+    <string name="iv_logoVeterinaria">logoVeterinaria</string>
+    <string name="bt_mostrar_string">MostrarClientes</string>
+    <string name="bt_buscar_string">Buscar</string>
+    <string name="bt_salir_string">Salir</string>
+    <string name="et_apellidos_string">Ingrese Apellidos</string>
+    <string name="tv_registarNC">Registrar Nuevo Cliente</string>
+    <string name="bt_registrarNM">Registrar Nueva Mascota</string>
+    <string name="et_nombreNomMascota_string">Nombre de la Mascota</string>
+    <string name="et_razaMascota_string">Ingrese su Raza</string>
+    <string name="et_sexoMascota_string">Sexo Mascota</string>
+    <string name="et_edadMascota_string">Edad</string>
+    <string name="bt_registrar">Registrar</string>
+    <string name="et_telefono_string">Telefono</string>
+    <string name="et_correo_string">Correo</string>
+    <string name="et_direccion">Direccion</string>
+    <string name="et_nombres">Ingrese Nombres</string>
+    <string name="tv_registrarNC_string"> &lt;u>Registrar nuevo cliente&lt;/u></string>
+    <string name="tv_consulta_string">Consulta</string>
+    <string name="tv_vacunas_string">Vacunas</string>
+    <string name="tv_tratamiento">Tratamiento</string>
+    <string name="tv_cortes_string">Lavado|Corte</string>
+    <string name="ml_motivoConsulta_string">Motivo de la consulta</string>
+    <string name="ml_anamnesis_string">Anamnesis y descripción</string>
+    <string name="tv_fecha_string">Fecha</string>
+    <string name="tv_temperatura_string">T°</string>
+    <string name="tv_peso_string">Peso</string>
+    <string name="bt_siguiente_string">Siguiente</string>
+    <string name="rb_si_string">si</string>
+    <string name="rb_no_string">no</string>
+    <string name="rb_fuertes_string">Fuerte</string>
+    <string name="rb_regulares_string">Regular</string>
+    <string name="ml_otros_string">Otros</string>
+    <string name="rb_lento_string">Lento</string>
+    <string name="ml_observaciones_string">Observaciones</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="continuar">Continuar</string>
+    <string name="Cancelar">Cancelar</string>
+
+
+    <string-array name="tiempo">
+        <item>Años</item>
+        <item>Meses</item>
+    </string-array>
+    <string-array name="sexo">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+    <string-array name="razas">
+        <item>- Seleccione Raza -</item>
+        <item>Husky siberiano</item>
+        <item>Golden retriever</item>
+        <item>Poodle</item>
+        <item>Pastor Aleman</item>
+        <item>Yorkshire terrier</item>
+        <item>Dalmata</item>
+        <item>Boxer</item>
+        <item>Chihuahua</item>
+        <item>Bulldog ingles</item>
+        <item>Beagle</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="especieM">
+        <item> Seleccione especie</item>
+    </string-array>
 </resources>

@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".registrarMascota"></activity>
+        <activity android:name=".historialGeneralMasc" />
+        <activity android:name=".fichaTecnica4" />
+        <activity android:name=".fichaTecnica3" />
+        <activity android:name=".fichaTecnica2" />
+        <activity android:name=".fichaTecnica1" />
+        <activity android:name=".listaMascotas" />
+        <activity android:name=".registrarCliente" />
+        <activity android:name=".buscarInicio" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
