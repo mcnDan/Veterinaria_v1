@@ -27,11 +27,12 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="30dp"
                     android:text="Nombre Cliente:"
                     android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_nombreCliente_RM"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toEndOf="@+id/imageButton13"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,9 +52,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:text="nombreCLiente"
                     android:textColor="#000000"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton14"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="@+id/textView4" />
 
@@ -184,7 +188,7 @@
                     android:onClick="goInicio"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ic_launcher_foreground" />
+                    tools:srcCompat="@drawable/ic_launcher_background" />
 
                 <ImageButton
                     android:id="@+id/imageButton14"
@@ -196,7 +200,7 @@
                     android:onClick="goListaMascotas"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/ic_launcher_foreground" />
+                    tools:srcCompat="@drawable/ic_launcher_background" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

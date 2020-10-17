@@ -1,7 +1,9 @@
 package com.example.veterinaria_v1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -50,6 +52,7 @@ public class registrarMascota extends AppCompatActivity {
         periodo = findViewById(R.id.sp_mesesAnios);
         //creando arrays para spinner (razas de animales)
         //PERROS
+        nombreM.requestFocus();
         razaPerros = new ArrayList<>();
         razaPerros.add("Husky Siberiano");
         razaPerros.add("Golden Retriever");
@@ -168,6 +171,21 @@ public class registrarMascota extends AppCompatActivity {
             nombreM.setText("");
             edadM.setText("");
             nombreM.requestFocus();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.regExito);
+            builder.setMessage(String.format("¿Desea registrar a otra mascota?"));
+            builder.setNegativeButton(R.string.rb_no_string, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    i = new Intent(getApplicationContext(),listaMascotas.class);
+                    i.putExtra("cliente",cliente.getText().toString());
+                    i.putExtra("dni", dni.getText().toString());
+                    startActivity(i);
+                }
+            });
+            builder.setPositiveButton(R.string.rb_si_string,null);
+            builder.create().show();
+
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();

@@ -40,6 +40,9 @@
     <string name="confirmar">Confirmar</string>
     <string name="continuar">Continuar</string>
     <string name="Cancelar">Cancelar</string>
+    <string name="confirmarR">Terminar Consulta</string>
+    <string name="regExito">Mascota Registrada</string>
+    <string name="regContacto">Cliente Registrado!!!</string>
 
 
     <string-array name="tiempo">

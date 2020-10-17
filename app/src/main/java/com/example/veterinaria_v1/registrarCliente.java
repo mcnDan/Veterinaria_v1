@@ -1,7 +1,10 @@
 package com.example.veterinaria_v1;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import veterinaria_v1.basedatosConeccion.accesoBasedatos;
 
 public class registrarCliente extends AppCompatActivity {
+    private static final int REQUEST_CODE_AGENDA = 42;
     private accesoBasedatos basedatos;
     private Intent intent;
     private EditText dniC, nombreC, apellidoC, telefonoC, correC, direccionC;
@@ -30,7 +34,7 @@ public class registrarCliente extends AppCompatActivity {
         correC = findViewById(R.id.et_correo);
         direccionC = findViewById(R.id.et_direccion);
         regCel = findViewById(R.id.bt_registrarCel);
-
+        dniC.requestFocus();
 
     }
 
@@ -79,6 +83,7 @@ public class registrarCliente extends AppCompatActivity {
         // Sets the MIME type to match the Contacts Provider
         intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
         intent.putExtra(ContactsContract.Intents.Insert.EMAIL, correC.getText())
+                //intent.putExtra((ContactsContract.Groups.ACCOUNT_NAME,"vetsalud"))
 
                 /** In this example, sets the email type to be a work email.
                  * You can set other email types as necessary.*/
@@ -95,15 +100,39 @@ public class registrarCliente extends AppCompatActivity {
 
                 .putExtra(ContactsContract.Intents.Insert.PHONE_TYPE,
                         ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE);
-        dniC.setText("");
-        nombreC.setText("");
-        apellidoC.setText("");
-        telefonoC.setText("");
-        correC.setText("");
-        direccionC.setText("");
-        regCel.setEnabled(false);
-        dniC.requestFocus();
 
-        startActivity(intent);
+
+        startActivityForResult(intent,REQUEST_CODE_AGENDA);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.regContacto);
+        builder.setMessage(String.format("¿Desea registrar otro cliente?"));
+        builder.setNegativeButton(R.string.rb_no_string, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("dni",dniC.getText().toString());
+                startActivity(intent);
+            }
+        });
+        builder.setPositiveButton(R.string.rb_si_string, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dniC.setText("");
+                nombreC.setText("");
+                apellidoC.setText("");
+                telefonoC.setText("");
+                correC.setText("");
+                direccionC.setText("");
+                regCel.setEnabled(false);
+                dniC.requestFocus();
+            }
+        });
+        builder.create().show();
+
     }
 }

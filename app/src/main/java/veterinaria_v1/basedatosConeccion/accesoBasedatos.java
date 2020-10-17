@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import clasesAuxiliares.classBusquedaApellidos;
 import clasesAuxiliares.classEspecieMascota;
@@ -88,6 +90,12 @@ public class accesoBasedatos {
         }
         return aux;
     }
+    // METODOS AUXILIARES
+    public String getFechahoy(){
+        Date ahora = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        return format.format(ahora);
+    }
     //generando codigos personalizados de clase PERSONA, MASCOTA , CONSULTA , TRATAMIENTO, VACUNAS Y SERVICIOS
         public String generarCodPersona(){
         c= database.rawQuery("select cod_persona" +
@@ -110,6 +118,13 @@ public class accesoBasedatos {
         String aux = "CON000"+String.valueOf(contador);
         return aux;
     }
+    public String generarCodTratamiento() {
+        c = database.rawQuery("select cod_tratamiento" +
+                " from tratamiento", null);
+        int contador = c.getCount() + 1;
+        String aux = "TRT0001" + String.valueOf(contador);
+        return aux;
+    }
 
     // Insertar
     public void insertarPersona(String codigo , String apellidos , String nombres, String telefono,
@@ -129,10 +144,10 @@ public class accesoBasedatos {
     }
     public void insertarConsulta(String codConsulta,String codMascota, String fecha,String triaje,
                                  String descripcion, String hallazgosC, String pruebasA,String diagnostico,
-                                 String tratamientoRealizar,Boolean reqTratamiento){
-        String sqlAux= "insert into consulta values('"+codConsulta+"','"+codConsulta+"','"+fecha+"','"+triaje+"',\n" +
+                                 String tratamientoRealizar,boolean reqTratamiento){
+        String sqlAux= "insert into consulta values('"+codConsulta+"','"+codMascota+"','"+fecha+"','"+triaje+"',\n" +
                 "                '"+descripcion+" ',' "+hallazgosC+"','"+pruebasA+"',\n" +
-                "                '"+diagnostico+" ','"+tratamientoRealizar+" ',"+reqTratamiento+")";
+                "                '"+diagnostico+" ','"+tratamientoRealizar+" ','"+reqTratamiento+"')";
         database.execSQL(sqlAux);
     }
     // metodos auxiliares (comprobacion, llenado ,numero de Consultas tratamientos etc

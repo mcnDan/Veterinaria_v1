@@ -37,17 +37,18 @@ accesoBasedatos basedatos;
                 basedatos = accesoBasedatos.getInstance(getApplicationContext());
                 basedatos.open();
                 String numConsultas = basedatos.contarConsultas(codigoM.getText().toString());
-                String numTratamiento = basedatos.contarTratamiento((codigoM.getText().toString()));
+                //String numTratamiento = basedatos.contarTratamiento((codigoM.getText().toString()));
                 String numVacunas = basedatos.contarVacunas(codigoM.getText().toString());
                 String numServicios = basedatos.contarLavado(codigoM.getText().toString());
                 tvConsulta.setText(numConsultas);
-                tvTratamiento.setText(numTratamiento);
+                //tvTratamiento.setText(numTratamiento);
                 tvVacuna.setText(numVacunas);
                 tvServiciolc.setText(numServicios);
                 basedatos.close();
 
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             Toast.makeText(getApplicationContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
