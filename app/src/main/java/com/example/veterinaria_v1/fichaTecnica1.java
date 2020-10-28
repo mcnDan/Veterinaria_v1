@@ -33,8 +33,8 @@ public class fichaTecnica1 extends AppCompatActivity {
     private RadioButton rbFiebreAlta,rbFiebreRegular, rbPresionBaja,rbDefecNormal,rbDefecDiarrea,
             rbDefecBlanco,rbDefecRojo,rbDefecCafe,rbDefecNegro,rbEscalofrioFuerte,rbEscalofrioLento;
     private CheckBox chk_cf, chk_hp, chk_dt, chk_pv, chk_rf, chk_pf, chk_lp, chk_pi, chk_rb;
-    // STRING AUXILIARES TRIAJE, ANAMNESIS y HALLAZGOS CLINICOS
-    private String triajeString,descripcionString, hallazgosClinicos_string;
+    // STRING AUXILIARES MOTIVO, TRIAJE, ANAMNESIS y HALLAZGOS CLINICOS
+    private String motivoString,triajeString,descripcionString, hallazgosClinicos_string;
     private double costo_double;
     private accesoBasedatos basedatos;
 
@@ -161,12 +161,14 @@ public class fichaTecnica1 extends AppCompatActivity {
          builder.setPositiveButton(R.string.continuar, new DialogInterface.OnClickListener() {
              @Override
              public void onClick(DialogInterface dialog, int which) {*/
-                 reporteTriaje();
+        motivoString = etMotivo.getText().toString();
+        reporteTriaje();
                  reporteHallazgosClinicos();
-                 Toast.makeText(getApplicationContext(),triajeString+ hallazgosClinicos_string, Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),triajeString+ hallazgosClinicos_string, Toast.LENGTH_LONG).show();
                  i = new Intent(getApplicationContext(),fichaTecnica2.class);
                  //enviando datos para tabla CONSULTA
                  i.putExtra("codigoM",tvCodigoM.getText().toString());
+                 i.putExtra("motivo",motivoString);
                  i.putExtra("triaje",triajeString);
                  i.putExtra("anamnesis",descripcionString);
                  i.putExtra("hallazgosC",hallazgosClinicos_string);
@@ -182,6 +184,7 @@ public class fichaTecnica1 extends AppCompatActivity {
 
     public void reporteTriaje() {
         // llenando Triaje - Formato muy simple.
+
         triajeString = "REPORTE TRIAJE" +
                 "\n =====================" +
                 "\nNombreCliente: " + tvCliente.getText().toString() +
@@ -227,7 +230,7 @@ public class fichaTecnica1 extends AppCompatActivity {
         }
         //agregando Otros y Anamnesis - descripcion
         triajeString += "\nOtrasVacunas: " + etOtros.getText().toString() ;
-        descripcionString = etAnamnesis.getText().toString();
+        descripcionString = "\nAnanmnesis: "+etAnamnesis.getText().toString();
 
     }
     public void reporteHallazgosClinicos(){

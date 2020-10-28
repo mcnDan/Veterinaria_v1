@@ -11,9 +11,10 @@ import android.widget.Toast;
 import veterinaria_v1.basedatosConeccion.accesoBasedatos;
 
 public class historialGeneralMasc extends AppCompatActivity {
-private Intent i;
-    private TextView cliente,dni,nombreM,codigoM,tvConsulta,tvTratamiento,tvVacuna,tvServiciolc;
-accesoBasedatos basedatos;
+    private Intent i;
+    private TextView cliente, dni, nombreM, codigoM, tvConsulta, tvTratamiento, tvVacuna, tvServiciolc;
+    accesoBasedatos basedatos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +24,13 @@ accesoBasedatos basedatos;
         nombreM = findViewById(R.id.tv_nombreMasc);
         codigoM = findViewById(R.id.tv_codigoMasc);
         tvConsulta = findViewById(R.id.tv_consultasHgm);
-        tvTratamiento= findViewById(R.id.tv_tratamientoHgm);
-        tvVacuna= findViewById(R.id.tv_vacunasHgm);
-        tvServiciolc= findViewById(R.id.tv_cortesHgm);
+        tvTratamiento = findViewById(R.id.tv_tratamientoHgm);
+        tvVacuna = findViewById(R.id.tv_vacunasHgm);
+        tvServiciolc = findViewById(R.id.tv_cortesHgm);
         //recibiendo datos cliente y mascota de listaMascotas.class
         try {
-            if(getIntent()!=null){
+            if (getIntent() != null) {
+                //RECIBIENDO DATOS CLIENTE Y MASCOTA
                 cliente.setText(getIntent().getStringExtra("cliente"));
                 dni.setText(getIntent().getStringExtra("dni"));
                 nombreM.setText(getIntent().getStringExtra("nombreM"));
@@ -49,29 +51,41 @@ accesoBasedatos basedatos;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            Toast.makeText(getApplicationContext(),e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
 
     }
+
     public void goInicio(View view) {
-        i= new Intent(this,MainActivity.class);
-        i.putExtra("dni",dni.getText().toString());
-        startActivity(i);
-    }
-    public void goListaMascotas(View view){
-        i= new Intent(this,listaMascotas.class);
-        i.putExtra("cliente",cliente.getText().toString());
+        i = new Intent(this, MainActivity.class);
         i.putExtra("dni", dni.getText().toString());
         startActivity(i);
     }
-    public void goFichaTecnica(View view){
-        i = new Intent(this,fichaTecnica1.class);
-        i.putExtra("cliente",cliente.getText().toString());
+
+    public void goListaMascotas(View view) {
+        i = new Intent(this, listaMascotas.class);
+        i.putExtra("cliente", cliente.getText().toString());
         i.putExtra("dni", dni.getText().toString());
-        i.putExtra("cliente",cliente.getText().toString());
+        startActivity(i);
+    }
+
+    public void goFichaTecnica(View view) {
+        i = new Intent(this, fichaTecnica1.class);
+        datosCLienteYMascota();
+        startActivity(i);
+    }
+
+    public void openConsultaHistorial(View view) {
+        i = new Intent(this, consultasHistorial.class);
+        datosCLienteYMascota();
+        startActivity(i);
+    }
+
+    public void datosCLienteYMascota() {
+        i.putExtra("dni", dni.getText().toString());
+        i.putExtra("cliente", cliente.getText().toString());
         i.putExtra("nombreM", nombreM.getText().toString());
         i.putExtra("codigoM", codigoM.getText().toString());
-        startActivity(i);
     }
 }

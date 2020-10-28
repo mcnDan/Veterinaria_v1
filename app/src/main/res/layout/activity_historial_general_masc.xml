@@ -214,6 +214,7 @@
                     android:id="@+id/bt_consultasHgm"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
+                    android:onClick="openConsultaHistorial"
                     app:layout_constraintEnd_toStartOf="@+id/bt_vacunasHgm"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"

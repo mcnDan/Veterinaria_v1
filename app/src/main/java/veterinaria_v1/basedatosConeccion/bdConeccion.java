@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class bdConeccion extends SQLiteAssetHelper {
-    private final static String DATABASE="veterinaria_t6.db";
+    private final static String DATABASE="veterinaria_vf5.db";
     private final static int VERSION=1;
 
     public bdConeccion(Context context) {

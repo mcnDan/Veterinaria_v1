@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class fichaTecnica3 extends AppCompatActivity {
     private Intent i;
     private EditText otrosExamenes,observacionesE;
-    private String codigoM, tvDni, tvCliente, triaje, descripcion,hallazgosFt2, hallazgosC,pruebasAuxiliares;
+    private String codigoM, tvDni, tvCliente, motivo, triaje, descripcion,hallazgosFt2, hallazgosC,pruebasAuxiliares;
     //CHECKBOX EXAMENES
     private CheckBox ecografiaE,radiografiaE,resonanciaE,electrocardioE,
     //CHECKBOX ANALISIS LABORATORIO
@@ -45,6 +45,7 @@ public class fichaTecnica3 extends AppCompatActivity {
             codigoM = getIntent().getStringExtra("codigoM");
             tvDni = getIntent().getStringExtra("dni");
             tvCliente = getIntent().getStringExtra("cliente");
+            motivo = getIntent().getStringExtra("motivo");
             triaje =getIntent().getStringExtra("triaje");
             descripcion = getIntent().getStringExtra("anamnesis");
             hallazgosC = getIntent().getStringExtra("hallazgosC");
@@ -68,10 +69,11 @@ public class fichaTecnica3 extends AppCompatActivity {
     //boton inferior
     public void siguiente(View view){
         reportePruebasAuxiliares();
-        Toast.makeText(getApplicationContext(),triaje+hallazgosC+pruebasAuxiliares,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),triaje+hallazgosC+pruebasAuxiliares,Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,fichaTecnica4.class);
         //enviando datos para tabla CONSULTA
         i.putExtra("codigoM",codigoM);
+        i.putExtra("motivo",motivo);
         i.putExtra("triaje",triaje);
         i.putExtra("anamnesis",descripcion);
         i.putExtra("hallazgosC",hallazgosC);

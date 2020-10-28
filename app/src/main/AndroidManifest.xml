@@ -2,14 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.veterinaria_v1">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".registrarMascota"></activity>
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".registrarCompraPP"></activity>
+        <activity android:name=".modificarProveedor" />
+        <activity android:name=".registrarProveedor" />
+        <activity android:name=".listaProducto" />
+        <activity android:name=".modificarProducto" />
+        <activity android:name=".opcionesUsuario" />
+        <activity android:name=".registrarProducto" />
+        <activity android:name=".cuentaMascota" />
+        <activity android:name=".fichaConsulta" />
+        <activity android:name=".consultasHistorial" />
+        <activity android:name=".registrarMascota" />
         <activity android:name=".historialGeneralMasc" />
         <activity android:name=".fichaTecnica4" />
         <activity android:name=".fichaTecnica3" />
@@ -25,6 +44,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.veterinaria_v1"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

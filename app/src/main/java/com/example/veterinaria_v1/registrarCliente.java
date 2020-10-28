@@ -21,6 +21,8 @@ public class registrarCliente extends AppCompatActivity {
     private Intent intent;
     private EditText dniC, nombreC, apellidoC, telefonoC, correC, direccionC;
     private Button regCel;
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class registrarCliente extends AppCompatActivity {
         dniC.requestFocus();
 
     }
+
 
     public void goInicio(View view) {
         intent = new Intent(this, MainActivity.class);

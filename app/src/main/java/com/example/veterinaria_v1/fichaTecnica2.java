@@ -26,7 +26,7 @@ public class fichaTecnica2 extends AppCompatActivity {
     //RADIOBUTTON SECREC. MUCOSA
     narizSecrecion, bocaSecrecion;
     private EditText otros;
-    private String codigoM, tvDni, tvCliente, triaje, descripcion,hallazgosFt1, hallazgosC;
+    private String codigoM, tvDni, tvCliente,motivo, triaje, descripcion,hallazgosFt1, hallazgosC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,7 @@ public class fichaTecnica2 extends AppCompatActivity {
         if (getIntent() != null) {
             //Recuperando datos de FICHATECNICA1
             codigoM = getIntent().getStringExtra("codigoM");
+            motivo = getIntent().getStringExtra("motivo");
             triaje = getIntent().getStringExtra("triaje");
             descripcion = getIntent().getStringExtra("anamnesis");
             hallazgosFt1 = getIntent().getStringExtra("hallazgosC");
@@ -105,10 +106,11 @@ public class fichaTecnica2 extends AppCompatActivity {
     public void siguiente(View view) {
         hallazgosC="";
         reporteHallazgosClinicos();
-        Toast.makeText(getApplicationContext(),triaje+hallazgosFt1+hallazgosC,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),triaje+hallazgosFt1+hallazgosC,Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, fichaTecnica3.class);
         //enviando datos para tabla CONSULTA
         i.putExtra("codigoM",codigoM);
+        i.putExtra("motivo",motivo);
         i.putExtra("triaje",triaje);
         i.putExtra("anamnesis",descripcion);
         i.putExtra("hallazgosC",hallazgosFt1+hallazgosC);

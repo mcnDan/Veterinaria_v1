@@ -24,15 +24,20 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_logoVeterinaria"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:contentDescription="@string/app_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/vetsal" />
+                    app:srcCompat="@drawable/vetsalud_t1" />
 
                 <EditText
                     android:id="@+id/et_dniInicio"
@@ -48,7 +53,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/button"
                     app:layout_constraintEnd_toStartOf="@+id/button"
                     app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="@+id/iv_logoVeterinaria"
                     app:layout_constraintTop_toTopOf="@+id/button" />
 
                 <Button
@@ -58,9 +63,9 @@
                     android:layout_marginTop="30dp"
                     android:onClick="ingresar"
                     android:text="@string/bt_ingresar_string"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_logoVeterinaria"
                     app:layout_constraintStart_toEndOf="@+id/et_dniInicio"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_logoVeterinaria" />
 
                 <TextView
                     android:id="@+id/textView"

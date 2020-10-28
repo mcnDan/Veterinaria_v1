@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cuentaMascota">
+
+    <ScrollView
+        android:id="@+id/miScrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Cliente:"
+                    android:textColor="#757474"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="101dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_nombreCliente_RM3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cliente"
+                    android:textColor="#040404"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="207dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_dniHgm2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dni"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="207dp"
+                    tools:layout_editor_absoluteY="42dp" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DNI:"
+                    android:textColor="#757474"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="166dp"
+                    tools:layout_editor_absoluteY="42dp" />
+
+                <ImageButton
+                    android:id="@+id/bt_homeHgm3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_view" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NomMascota:"
+                    android:textColor="#757474"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="49dp"
+                    tools:layout_editor_absoluteY="75dp" />
+
+                <TextView
+                    android:id="@+id/tv_nombreMasc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="133dp"
+                    tools:layout_editor_absoluteY="75dp" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Codigo:"
+                    android:textColor="#757474"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="201dp"
+                    tools:layout_editor_absoluteY="75dp" />
+
+                <TextView
+                    android:id="@+id/tv_codigoMasc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    tools:layout_editor_absoluteX="257dp"
+                    tools:layout_editor_absoluteY="75dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton18"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="120dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ListView
+                    android:id="@+id/lv_prueba"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2196F3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                <Button
+                    android:id="@+id/button13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="300dp"
+                    android:text="Button"
+                    app:layout_constraintTop_toBottomOf="@+id/lv_prueba"
+                    tools:layout_editor_absoluteX="210dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

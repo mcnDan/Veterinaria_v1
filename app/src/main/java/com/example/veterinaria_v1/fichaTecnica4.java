@@ -22,7 +22,7 @@ public class fichaTecnica4 extends AppCompatActivity {
     //CHECKBOX DIAGNOSTICO
     private CheckBox generalDiag, presuntivoDiag, diferenciaDiag, confirmadoDiag, requiereDiag;
     private EditText etDiagnostico, etDescripicionTratDiag;
-    private String codigoM, tvDni, tvCliente, triaje, descripcion, hallazgosC, pruebasAuxiliares, diagnostico;
+    private String codigoM, tvDni, tvCliente,motivo, triaje, descripcion, hallazgosC, pruebasAuxiliares, diagnostico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class fichaTecnica4 extends AppCompatActivity {
             codigoM = getIntent().getStringExtra("codigoM");
             tvDni = getIntent().getStringExtra("dni");
             tvCliente = getIntent().getStringExtra("cliente");
+            motivo = getIntent().getStringExtra("motivo");
             triaje = getIntent().getStringExtra("triaje");
             descripcion = getIntent().getStringExtra("anamnesis");
             hallazgosC = getIntent().getStringExtra("hallazgosC");
@@ -66,7 +67,7 @@ public class fichaTecnica4 extends AppCompatActivity {
 
     public void registrarConsulta(View view) {
         reporteDiagnostico();
-        Toast.makeText(getApplicationContext(), triaje + hallazgosC + pruebasAuxiliares + diagnostico, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), triaje + hallazgosC + pruebasAuxiliares + diagnostico, Toast.LENGTH_SHORT).show();
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
          builder.setTitle(R.string.confirmarR);
@@ -80,15 +81,19 @@ public class fichaTecnica4 extends AppCompatActivity {
                  String fecha = basedatos.getFechahoy();
 
                  //Toast.makeText(getApplicationContext(),codigoC,Toast.LENGTH_LONG).show();
-                 boolean auxRequiere;
+                 boolean chkTratamiento=false;
+                 boolean chkPago=false;
                  if (requiereDiag.isChecked())
-                     auxRequiere = true;
-                 else
-                     auxRequiere = false;
+                     chkTratamiento = true;
+                 try {
+                     basedatos.insertarConsulta(codigoC, codigoM,motivo,fecha,triaje, descripcion, hallazgosC,
+                             pruebasAuxiliares, diagnostico,
+                             etDescripicionTratDiag.getText().toString(), chkTratamiento,chkPago);
+                 } catch (Exception e) {
+                     Toast.makeText(getApplicationContext(),"no se registro",Toast.LENGTH_SHORT).show();
 
-                 basedatos.insertarConsulta(codigoC, codigoM, fecha, triaje, descripcion, hallazgosC,
-                         pruebasAuxiliares, diagnostico,
-                         etDescripicionTratDiag.getText().toString(), auxRequiere);
+                     e.printStackTrace();
+                 }
                  basedatos.close();
                  i = new Intent(getApplicationContext(),listaMascotas.class);
                  i.putExtra("cliente",tvCliente);
@@ -103,7 +108,7 @@ public class fichaTecnica4 extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
             System.out.println(e.getMessage());
         }   
 
@@ -146,7 +151,7 @@ public class fichaTecnica4 extends AppCompatActivity {
         }
         diagnostico += "\nDescripcion: " + etDiagnostico.getText().toString();
         if (requiereDiag.isChecked()) {
-            diagnostico += "\nNotaImportante: Requiere tratamiento";
+            diagnostico += "\nNota Importante: Requiere tratamiento";
             diagnostico += "\nDescripcionTrat. : " + etDescripicionTratDiag.getText().toString();
         }
 

@@ -34,10 +34,10 @@ public class listaMascotas extends AppCompatActivity {
         dni = findViewById(R.id.tv_dniCliente);
         //Mostrando datos cliente en TextView recibidos de Main...class
         listaMascotas = findViewById(R.id.lv_listaMascotas);
-        if (getIntent() != null) {
+
             cliente.setText(getIntent().getStringExtra("cliente"));
             dni.setText(getIntent().getStringExtra("dni"));
-        }
+
         //mostrando datos mascota en listview por DNI
         auxMascotaAl = new ArrayList();
         int dniInt = Integer.parseInt(dni.getText().toString());
@@ -48,10 +48,11 @@ public class listaMascotas extends AppCompatActivity {
             ArrayAdapter<classMascota> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, auxMascotaAl);
             listaMascotas.setAdapter(adapter);
             //pasando a historialGeneral.class a traves de item de listview y enviando datos cliente y mascota
-            i = new Intent(this, historialGeneralMasc.class);
+
             listaMascotas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    i = new Intent(getApplicationContext(), historialGeneralMasc.class);
                     String codigoM = auxMascotaAl.get(position).getCodigo();
                     String nombreM= auxMascotaAl.get(position).getNombre();
                     i.putExtra("cliente",cliente.getText().toString());

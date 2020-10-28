@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,6 +31,18 @@ public class buscarInicio extends AppCompatActivity {
         setContentView(R.layout.activity_buscar_inicio);
         listaClientes = findViewById(R.id.lv_listaClientes);
         apellido = findViewById(R.id.et_buscarApellido);
+        try {
+            aux = new ArrayList<>();
+            database = accesoBasedatos.getInstance(getApplicationContext());
+            database.open();
+            aux = database.buscarPorApellido("");
+            ArrayAdapter<classBusquedaApellidos> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, aux);
+            listaClientes.setAdapter(adapter);
+            database.close();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
         i = new Intent(this,MainActivity.class);
         listaClientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -36,6 +50,25 @@ public class buscarInicio extends AppCompatActivity {
                 String dniString = String.valueOf(aux.get(position).getDni());
                 i.putExtra("dni",dniString);
                 startActivity(i);
+            }
+        });
+        apellido.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                try {
+                    aux = new ArrayList<>();
+                    database = accesoBasedatos.getInstance(getApplicationContext());
+                    database.open();
+                    String ape = apellido.getText().toString();
+                    aux = database.buscarPorApellido(ape);
+                    ArrayAdapter<classBusquedaApellidos> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, aux);
+                    listaClientes.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    database.close();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+                return true;
             }
         });
 
@@ -50,6 +83,7 @@ public class buscarInicio extends AppCompatActivity {
             aux = database.buscarPorApellido(ape);
             ArrayAdapter<classBusquedaApellidos> adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, aux);
             listaClientes.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             database.close();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
